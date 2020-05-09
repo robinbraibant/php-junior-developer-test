@@ -19,3 +19,7 @@ Feel free to use whichever framework you feel most comfortable with.
 - Make it as object-oriented as possible
 - Manage your dependencies with Composer
 - If you have frontend assets, use a build tool like web pack or gulp to compile them
+
+# Information to Deploy
+- I have used a webserver to deploy the application. To deploy: php bin/console server:run
+- To access the database, change the credentials in the .env file. In the 'sql' directory, you can find an sql script that you can execute to create the database.
