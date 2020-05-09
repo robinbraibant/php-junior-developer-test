@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+    margin:auto;
+}
+
+.wrapper {
+    height: 40vh;
+    flex-grow: 1;
+    margin: 0.5%;
+}
+
+.wrapper:hover {
+    background-color: rgba(170,170,170,0.4);
+}
+
+img:hover{
+    opacity: .5;
+    cursor: pointer;
+}
+
+img {
+    max-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+    opacity: 1;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.wrapper:last-child {
+    flex-grow: 10;
+}
