@@ -5,21 +5,13 @@
 {% endblock %}
 
 {% block body %}
-    {#<div class="container">#}
-        {#<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">#}
-            {#{% for apod in apods %}#}
-                {#<div class="apodImage">#}
-                    {#<img  src="{{ apod.image }}" alt="another space image">#}
-                {#</div>#}
-            {#{% endfor %}#}
-        {#</div>#}
-    {#</div>#}
     <div class="container">
         {% for apod in apods %}
         <div class="wrapper">
-            <img src="{{ apod.image }}" alt="another space image">
+            <a href="{{ path('detail', {'apod' : apod}) }}">
+                <img src="{{ apod.image }}" alt="another space image">
+            </a>
         </div>
         {% endfor %}
     </div>
-
 {% endblock %}

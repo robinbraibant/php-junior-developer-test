@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{{ asset('assets/css/detail.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        <button type="button" class="btn btn-secondary button">
+            <a href="{{ path('apod') }}" class="ankerInButton">Home</a>
+        </button>
+        <div class="detailContainer">
+            <div class="card">
+                <img class="card-img-top" src="{{ apod.image }}" alt="{{ apod.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ apod.title }}
+                    </h5>
+                    <p class="card-text">
+                        {{ apod.description }}
+                    </p>
+                </div>
+                <div class="card-footer text-muted">
+                    {{ apod.date }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

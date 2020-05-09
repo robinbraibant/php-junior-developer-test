@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Apod;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -27,6 +28,17 @@ class ApodController extends AbstractController
         $lastapods = $entityManager->getRepository(Apod::class)->retrieveLast30Days();
 
         return $this->render('apod/index.html.twig', ['apods' => $lastapods]);
+    }
+
+    /**
+     * @Route("/detail", methods={"GET"}, name="detail")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function detail(Request $request)
+    {
+        $apod = $this->createNewApod($request);
+        return $this->render('apod/detail.html.twig', ['apod' => $apod]);
     }
 
     private function fillDataBase($httpClient, $entityManager){
@@ -58,5 +70,14 @@ class ApodController extends AbstractController
         $apod->setImage($content["url"]);
         $apod->setTitle($content["title"]);
         $entityManager->persist($apod);
+    }
+
+    private function createNewApod(Request $request){
+        $apod = new Apod();
+        $apod->setDescription($request->query->get("apod")['description']);
+        $apod->setDate($request->query->get("apod")['date']);
+        $apod->setImage($request->query->get("apod")['image']);
+        $apod->setTitle($request->query->get("apod")['title']);
+        return $apod;
     }
 }
